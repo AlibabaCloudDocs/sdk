@@ -93,13 +93,12 @@ client = AcsClient(
 
 4.  发起调用并处理返回。
 
-    ```
+    ```py
     DescribeInstancesResponse response;
     
     try:
         response = client.do_action_with_exception(request)
-        for instance in response['Instances']:
-            print instance['PublicIpAddress']
+        print(response)
     except ServerException as e:
         print e
     except ClientException as e:
