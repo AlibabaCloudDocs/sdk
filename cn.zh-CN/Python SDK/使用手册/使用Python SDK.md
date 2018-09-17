@@ -10,8 +10,7 @@
 
     执行以下命令，通过pip安装SDK。
 
-    ```
-    
+    ```bash
     pip install aliyun-python-sdk-core # 安装阿里云SDK核心库
     pip install aliyun-python-sdk-ecs # 安装管理ECS的库
     pip install aliyun-python-sdk-rds # 安装管理RDS的库
@@ -23,7 +22,7 @@
 
     无执行以下命令，通过GitHub安装Python SDK。
 
-    ```
+    ```bash
     git clone https://github.com/aliyun/aliyun-openapi-python-sdk.git
     # 安装阿里云 SDK 核心库
     cd aliyun-python-sdk-core
@@ -32,7 +31,6 @@
     cd aliyun-python-sdk-ecs
     python setup.py install
     ```
-
 
 ## 设置身份验证凭据 {#section_vjb_1qj_zdb .section}
 
@@ -54,7 +52,7 @@
 
 **说明：** 确保包含AccessKey的代码不会泄漏（例如提交到外部公开的GitHub项目），否则将会危害您的阿里云账号的信息安全。
 
-```
+```py
 client = AcsClient(
    "<access-key-id>", 
    "<access-key-secret>",
@@ -68,7 +66,7 @@ client = AcsClient(
 
 1.  导入相关产品的SDK。
 
-    ```
+    ```py
     from aliyunsdkcore.client import AcsClient
     from aliyunsdkcore.acs_exception.exceptions import ClientException
     from aliyunsdkcore.acs_exception.exceptions import ServerException
@@ -78,7 +76,7 @@ client = AcsClient(
 
 2.  新建一个AcsClient。
 
-    ```
+    ```py
     client = AcsClient(
        "<your-access-key-id>", 
        "<your-access-key-secret>",
@@ -88,7 +86,7 @@ client = AcsClient(
 
 3.  创建Request对象。
 
-    ```
+    ```py
     request = DescribeInstancesRequest.DescribeInstancesRequest()
     request.set_PageSize(10)
     ```
@@ -97,16 +95,15 @@ client = AcsClient(
 
     ```
     DescribeInstancesResponse response;
-    try {
-        response = client.getAcsResponse(request);
-        for (DescribeInstancesResponse.Instance instance:response.getInstances()) {
-            System.out.println(instance.getPublicIpAddress());
-        }
-    } catch (ServerException e) {
-        e.printStackTrace();
-    } catch (ClientException e) {
-        e.printStackTrace();
-    }
+    
+    try:
+        response = client.do_action_with_exception(request)
+        for instance in response['Instances']:
+            print instance.
+    except ServerException as e:
+        print e
+    except ClientException as e:
+        print e
     ```
 
 
