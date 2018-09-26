@@ -18,7 +18,7 @@
 
     **说明：** 如果您使用的是 python3.x，请将`pip install aliyun-python-sdk-core`修改为`pip install aliyun-python-sdk-core-v3`。
 
--   下载GithHub源码
+-   下载GitHub源码
 
     无执行以下命令，通过GitHub安装Python SDK。
 
